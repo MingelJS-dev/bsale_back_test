@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const database = require('../server.js');
-const Products = require('./product.js');
+const Product = require('./product.js');
 
 const Category = database.define('category', {
     id: {
@@ -10,6 +10,12 @@ const Category = database.define('category', {
     name: {
         type: Sequelize.STRING
     }
+})
+
+Category.hasMany(Product, {
+    as: 'products',
+    foreignKey: 'category',
+    targetKey: "id"
 })
 
 module.exports = Category;

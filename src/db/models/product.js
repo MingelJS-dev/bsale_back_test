@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../server');
+const Category = require('./category');
+
 
 const Product = sequelize.define('product', {
     id: {
@@ -22,10 +24,6 @@ const Product = sequelize.define('product', {
         type: Sequelize.INTEGER
     }
 });
-
-// Product.associate = (models) => {
-//     Product.hasOne(models.Category, { foreignKey: 'id', sourceKey: 'category' })
-//   };
 
 module.exports = Product;
 
