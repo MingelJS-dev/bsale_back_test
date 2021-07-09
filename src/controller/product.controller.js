@@ -1,6 +1,6 @@
 const { Product, Category } = require('../db/models')
 
-// Testing request
+// Testing postman request
 const getAll = async (req, res) => {
     try {
         const { limit = 6, offset = 0 } = req.query

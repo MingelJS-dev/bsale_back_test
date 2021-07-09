@@ -1,3 +1,6 @@
+const _ = require('lodash')
+const { Op } = require('sequelize')
+const sequelize = require('sequelize');
 const { Category, Product } = require('../db/models')
 
 // Testing request
@@ -19,12 +22,27 @@ const getAll = async (req, res) => {
 
 const getCategoryWithProducts = async (req, res) => {
     try {
+        const { filter } = req.query
+        let conditions = {}
+
+        if (filter) {
+            conditions = {
+                [Op.or]: [
+                    sequelize.where(
+                        sequelize.fn('LOWER', sequelize.col('products.name')), { [Op.like]: `%${filter}%` }
+                    )
+                ]
+            }
+        }
+
         const result = await Category.findAll({
+            where: conditions,
             include: [
                 {
                     model: Product,
-                    as: 'products'
-                 }
+                    as: 'products',
+
+                }
             ]
         })
 

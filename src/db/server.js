@@ -8,6 +8,7 @@ const database = new Sequelize(
     {
         host: 'mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com',
         dialect: 'mysql',
+        logging: false,
         define: {
             freezeTableName: true,
             timestamps: false
