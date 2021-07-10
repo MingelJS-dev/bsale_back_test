@@ -2,11 +2,11 @@
 const Sequelize = require('sequelize');
 
 const database = new Sequelize(
-    'bsale_test',
-    'bsale_test',
-    'bsale_test',
+    process.env.USER,
+    process.env.PASSWORD,
+    process.env.DB,
     {
-        host: 'mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com',
+        host: process.env.HOST,
         dialect: 'mysql',
         logging: false,
         define: {
