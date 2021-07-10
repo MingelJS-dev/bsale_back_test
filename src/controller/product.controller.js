@@ -6,12 +6,7 @@ const getAll = async (req, res) => {
         const { limit = 6, offset = 0 } = req.query
         const result = await Product.findAndCountAll({
             limit,
-            offset,
-            // include: [
-            //     {
-            //         model: Category,
-            //     }
-            // ]
+            offset
         })
 
         res.status(201).json({
